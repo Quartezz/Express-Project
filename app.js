@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -10,6 +11,14 @@ var usersRouter = require("./routes/users");
 var app = express();
 
 // view engine setup
+mongoose.set("strictQuery", false);
+const mongoDB =
+  "mongodb+srv://kamilmachel03:Ajzak53495600@cluster0.fxtpv0o.mongodb.net/?retryWrites=true&w=majority";
+main().catch((err) => console.log(err));
+async function main() {
+  console.log("It works!");
+  await mongoose.connect(mongoDB);
+}
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
