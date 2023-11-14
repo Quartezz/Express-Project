@@ -1,3 +1,4 @@
+require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -12,8 +13,7 @@ var app = express();
 
 // view engine setup
 mongoose.set("strictQuery", false);
-const mongoDB =
-  "mongodb+srv://kamilmachel03:Ajzak53495600@cluster0.fxtpv0o.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB = process.end.MONGODB_URL;
 main().catch((err) => console.log(err));
 async function main() {
   console.log("It works!");
